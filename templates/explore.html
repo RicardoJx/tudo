@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block title %}发现页{%end%}
+
+{% block content %}
+发现页explore content<br>
+    {% for num in range(1,5) %}
+    <img src="{{ static_url('images/{}.jpg'.format(num)) }}" width="200">
+    {% end %}
+{% end %}
