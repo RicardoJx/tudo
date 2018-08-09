@@ -1,0 +1,21 @@
+{% extends 'base.html %}
+
+{% block title %}login page{% end %}
+
+{% block content %}
+<div>
+    <form action="/login" enctype="multipart/form-data" method="post">
+        <div>
+            Username
+            <input type="text" name="username">
+        </div>
+        <div>
+            Password
+            <input type="password" name="password">
+        </div>
+
+        <input type="submit">
+    </form>
+</div>
+
+{% end %}

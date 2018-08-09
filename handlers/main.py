@@ -1,8 +1,15 @@
 import tornado.web
+from pycket.session import SessionMixin
 from utils import photo
 
 
-class IndexHandler(tornado.web.RequestHandler):
+class AuthBaseHandler(tornado.web.RequestHandler,SessionMixin):
+    def get_current_user(self):
+        return self.session.get('tudo_user',None)
+
+
+class IndexHandler(AuthBaseHandler):
+    @tornado.web.authenticated
     def get(self):
         self.render('index.html')
 
