@@ -3,6 +3,6 @@
 {% block title %}详情页{%end%}
 
 {% block content %}
-post of {{ post_id }} content <br>
-<img src="{{ static_url('images/{}.jpg'.format(post_id)) }}" width="200">
+post of {{ post.id }} content <br>
+<img src="/{{post.image_url}}" width="200">
 {% end %}
