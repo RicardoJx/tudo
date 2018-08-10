@@ -4,7 +4,7 @@
 
 {% block content %}
 <div>
-    <form action="/login" enctype="multipart/form-data" method="post">
+    <form action="/login?next={{next_url}}" enctype="multipart/form-data" method="post">
         <div>
             Username
             <input type="text" name="username">

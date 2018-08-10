@@ -14,7 +14,8 @@ class IndexHandler(AuthBaseHandler):
         self.render('index.html')
 
 
-class ExploreHandler(tornado.web.RequestHandler):
+class ExploreHandler(AuthBaseHandler):
+    @tornado.web.authenticated
     def get(self):
         urls=photo.get_images('uploads/thumbs')
         self.render('explore.html',urls=urls)

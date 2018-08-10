@@ -16,6 +16,7 @@ class Application(tornado.web.Application):
             ('/upload',main.UploadHandler),
             ('/login',auth.LoginHandler),
             ('/logout',auth.LogoutHandler),
+            ('/signup',auth.SignupHandler),
         ]
         settings = dict(
             debug=True,

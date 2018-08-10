@@ -1,16 +1,20 @@
 import hashlib
+from modles.users import User
 
 def hashed(text):
     return hashlib.md5(text.encode()).hexdigest()
 
 
-SIMPLE_USER_DATA={
-    'name':'tudo',
-    'password':hashed('pass')
-}
-print(SIMPLE_USER_DATA)
-
-
-
 def authenticate(username,password):
-    return (SIMPLE_USER_DATA['name']==username) and (SIMPLE_USER_DATA['password']==hashed(password))
+    if username and password:
+        hash_pass=User.get_pass(username)
+        return hash_pass and hash_pass==hashed(password)
+    else:
+        return False
+
+def register(username,password):
+    if User.is_exists(username):
+        return {'msg':'username is exists'}
+    else:
+        User.add_user(username,hashed(password))
+        return {'msg':'ok'}
