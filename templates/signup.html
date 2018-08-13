@@ -3,25 +3,36 @@
 {% block title %}register page{% end %}
 
 {% block content %}
-<div class="">
-    <form action="/signup" enctype="multipart/form-data" method="post">
-        <div>
-            Username
-            <input type="text" name="username" required="">
+<div class="container">
+    <div class="row justify-content-center" >
+        <div class="col-6 ">
+            <form action="/signup" enctype="multipart/form-data" method="post">
+                <div>
+                    Username
+                    <input type="text" name="username" required="">
+                </div>
+                <div>
+                    Password
+                    <input type="password" name="password1" required="">
+                </div>
+                <div>
+                    Password confirmation
+                    <input type="password" name="password2"  required="">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-key"></i></span>
+                        <span class="input-group-text" id="inputGroup-sizing-default">请重复输入密码</span>
+                    </div>
+                    <input name="password2" type="password" required="" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                </div>
+                <button>注册</button>
+                <div>
+                    已经有账号<a href="/login">登录</a>
+                </div>
+            </form>
         </div>
-        <div>
-            Password
-            <input type="password" name="password1" required="">
-        </div>
-        <div>
-            Password confirmation
-            <input type="password" name="password2"  required="">
-        </div>
-        <button>注册</button>
-        <div>
-            已经有账号<a href="/login">登录</a>
-        </div>
-    </form>
+    </div>
 </div>
 
 {% end %}

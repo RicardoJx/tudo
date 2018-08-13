@@ -2,16 +2,56 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Tornado Title{% end %}</title>
+    <link rel="stylesheet" href="{{ static_url('css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ static_url('font-awesome-4.7.0/css/font-awesome.css') }}">
+
 </head>
 <body>
-<a href="/explore">发现</a>
-<a href="/">首页</a>
-<a href="/upload">upload</a>
-<a href="/login">login</a>
-<a href="/signup">signup</a>
-<a href="/logout">logout</a><br>
-current_user:{{current_user}} <a href="/logout">logout</a><br>
-{% block content %}Default body of base{% end %}
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="/"><i class="fa fa-camera"></i>Tudo 图片</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">首页 <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/explore">发现</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-cogs"></i>用户中心
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/profile">个人信息</a>
+              <a class="dropdown-item" href="#">收藏</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">帮助</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="/logout">{{current_user}}登出</a>
+          </li>
+        </ul>
+          <a class="btn btn-info my-sm-0" href="/uploads">
+              <i class="fa fa-upload"></i>上传
+          </a>
+      </div>
+    </nav>
+
+    {% block content %}Default body of base{% end %}
+</div>
+
+
+
+<script src="{{static_url('js/jquery-3.3.1.slim.min.js')}}"></script>
+<script src="{{static_url('js/popper.min.js')}}"></script>
+<script src="{{static_url('js/bootstrap.js')}}"></script>
 </body>
 </html>

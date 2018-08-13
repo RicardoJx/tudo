@@ -4,5 +4,5 @@
 
 {% block content %}
 post of {{ post.id }} content <br>
-<img src="/{{post.image_url}}" width="200">
+<img src="{{static_url(post.image_url)}}" width="800" >
 {% end %}

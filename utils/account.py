@@ -1,5 +1,6 @@
 import hashlib
-from modles.users import User
+from modles.users import User,session
+
 
 def hashed(text):
     return hashlib.md5(text.encode()).hexdigest()
@@ -18,3 +19,7 @@ def register(username,password):
     else:
         User.add_user(username,hashed(password))
         return {'msg':'ok'}
+
+def get_user(username):
+    user=session.query(User).filter_by(name=username).first()
+    return user
