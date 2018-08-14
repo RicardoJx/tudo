@@ -39,6 +39,7 @@ class Post(Base):
 
     id= Column(Integer,primary_key=True,autoincrement=True)
     image_url=Column(String(100))
+    thumb_url=Column(String(100))
 
     user_id=Column(Integer,ForeignKey('users.id'))
     user=relationship('User',backref='posts',uselist=False,cascade='all')
@@ -46,3 +47,12 @@ class Post(Base):
     def __repr__(self):
         return "<Post(#)>".format(self.id)
 
+
+class Like(Base):
+    __tablename__='likes'
+
+    user_id=Column(Integer,ForeignKey('users.id'),nullable=False,primary_key=True)
+    post_id=Column(Integer,ForeignKey('posts.id'),nullable=False,primary_key=True)
+
+if __name__=='__main__':
+    Base.metadata.create_all()

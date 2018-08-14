@@ -1,7 +1,7 @@
 import uuid
 import os
 from PIL import Image
-from modles.users import Post,session,User
+from modles.users import Post,session,User,Like
 
 
 class UploadImage(object):
@@ -67,3 +67,8 @@ def get_posts_for(username):
 def get_post(post_id):
     post=session.query(Post).filter_by(id=post_id).scalar()
     return post
+
+def get_like_posts(user_id):
+    return session.query(Post).filter(Like.user_id==user_id,
+                                      Post.id==Like.post_id,
+                                      Post.user_id!=user_id).all()
