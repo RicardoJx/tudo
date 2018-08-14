@@ -26,16 +26,24 @@ class ExploreHandler(AuthBaseHandler):
 class ProfileHandler(AuthBaseHandler):
     @tornado.web.authenticated
     def get(self):
-        user=get_user(self.current_user)
-        like_posts=photo.get_like_posts(user.id)
-        self.render('profile.html',user=user,like_posts=like_posts)
+        name=self.get_argument('name',None)
+        if not name:
+            name=self.current_user
+        user=get_user(name)
+        if not user:
+            self.set_status(404)
+            self.write('name出错了')
+        else:
+            like_posts=photo.get_like_posts(user.id)
+            self.render('profile.html',user=user,like_posts=like_posts)
 
 
 class PostHandler(AuthBaseHandler):
     @tornado.web.authenticated
     def get(self,post_id):
         post=photo.get_post(post_id)
-        self.render('post.html',post=post)
+        users=photo.get_like_users(post.id)
+        self.render('post.html',post=post,users=users)
 
 
 class UploadHandler(AuthBaseHandler):

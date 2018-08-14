@@ -72,3 +72,7 @@ def get_like_posts(user_id):
     return session.query(Post).filter(Like.user_id==user_id,
                                       Post.id==Like.post_id,
                                       Post.user_id!=user_id).all()
+
+def get_like_users(post_id):
+    return session.query(User).filter(Like.post_id==post_id,
+                                      User.id==Like.user_id).all()
