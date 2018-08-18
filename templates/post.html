@@ -7,7 +7,7 @@ post of {{ post.id }} content <br>
 <img src="{{static_url(post.image_url)}}" width="800" >
 <div class="row">
     <div class="col">
-        <span class="h4">由{{post.user.name}}用户上传</span>
+        <span class="h4">由<a href="/profile?name={{post.user.name}}">{{post.user.name}}</a>用户上传</span>
         {% if users %}
             <span class="h4">标记喜欢的用户({{len(users)}})：</span>
             {% for u in users %}

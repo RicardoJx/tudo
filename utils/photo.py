@@ -54,6 +54,7 @@ def add_post(username,image_url,thumb_url):
     post=Post(image_url=image_url,thumb_url=thumb_url,user_id=user.id)
     session.add(post)
     session.commit()
+    return post
 
 def get_posts():
     posts = session.query(Post).all()

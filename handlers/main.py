@@ -38,6 +38,9 @@ class ProfileHandler(AuthBaseHandler):
             self.render('profile.html',user=user,like_posts=like_posts)
 
 
+
+
+
 class PostHandler(AuthBaseHandler):
     @tornado.web.authenticated
     def get(self,post_id):
